@@ -8,7 +8,7 @@ import { BookCopyDto } from '../models/book-copy.dto';
   providedIn: 'root',
 })
 export class BookCopyService {
-  private apiUrl = 'https://localhost:7119/api/bookcopy';
+  private apiUrl = 'https://localhost:7284/api/bookcopy';
 
   constructor(private http: HttpClient) {}
 

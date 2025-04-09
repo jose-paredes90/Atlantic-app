@@ -9,7 +9,7 @@ import { BookRequestDto } from '../models/book.request.dto';
   providedIn: 'root'
 })
 export class BookService {
-  private apiUrl = 'https://localhost:7119/api/books';
+  private apiUrl = 'https://localhost:7284/api/books';
 
   constructor(private http: HttpClient) { }
 

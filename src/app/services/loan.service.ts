@@ -7,7 +7,7 @@ import { LoansRequestDto } from '../models/load.request.dto';
 
 @Injectable()
 export class LoanService {
-    private apiUrl = 'https://localhost:7119/api/loans';
+    private apiUrl = 'https://localhost:7284/api/loans';
 
   constructor(private http: HttpClient) { }
 
