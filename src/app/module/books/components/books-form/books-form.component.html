@@ -1,0 +1,79 @@
+<div class="container">
+  <h2 class="title">Gestión de Libros</h2>
+
+  <mat-dialog-content>
+    <form [formGroup]="booksForm" class="form-container">
+      <div class="form-row">
+        <mat-form-field class="form-group" appearance="outline">
+          <mat-label>Título</mat-label>
+          <input matInput type="text" formControlName="titulo" required />
+          <mat-hint>Ingrese el título del libro</mat-hint>
+          <mat-error
+            *ngIf="
+              booksForm.get('titulo')?.hasError('required') &&
+              booksForm.get('titulo')?.touched
+            "
+          >
+            * Campo requerido
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-group" appearance="outline">
+          <mat-label>Autor</mat-label>
+          <input matInput type="text" formControlName="autor" required />
+          <mat-hint>Ingrese el nombre del autor</mat-hint>
+          <mat-error
+            *ngIf="
+              booksForm.get('autor')?.hasError('required') &&
+              booksForm.get('autor')?.touched
+            "
+          >
+            * Campo requerido
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field class="form-group" appearance="outline">
+          <mat-label>Categoría</mat-label>
+          <input matInput type="text" formControlName="categoria" required />
+          <mat-hint>Ejemplo: Ficción, Ciencia</mat-hint>
+          <mat-error
+            *ngIf="
+              booksForm.get('categoria')?.hasError('required') &&
+              booksForm.get('categoria')?.touched
+            "
+          >
+            * Campo requerido
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-group" appearance="outline">
+          <mat-label>Precio</mat-label>
+          <input matInput type="number" formControlName="precio" required />
+          <mat-hint>Ingrese el precio en dólares</mat-hint>
+          <mat-error
+            *ngIf="
+              booksForm.get('precio')?.hasError('required') &&
+              booksForm.get('precio')?.touched
+            "
+          >
+            * Campo requerido
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Cancelar</button>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="booksForm.invalid"
+      (click)="createBook()"
+    >
+    {{ editingLibro ? "Actualizar" : "Guardar" }}
+    </button>
+  </mat-dialog-actions>
+</div>

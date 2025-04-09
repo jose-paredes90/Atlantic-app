@@ -1,0 +1,83 @@
+.book {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__header {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #222;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 20px;
+  }
+
+  &__list {
+    padding-top: 20px;
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    table {
+      width: 100%;
+      min-width: 700px;
+
+      th {
+        padding: 14px;
+        text-align: left;
+        font-weight: bold;
+      }
+
+      td {
+        padding: 14px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      tr:hover {
+        background-color: #f2f2f2;
+        transition: background-color 0.3s ease-in-out;
+      }
+    }
+
+    mat-paginator {
+      margin-top: 20px;
+      align-self: flex-end;
+      border-radius: 8px;
+      padding: 8px 16px;
+    }
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+}
+
+@media (max-width: 768px) {
+  .book {
+    padding: 14px;
+  }
+
+  .book__list {
+    table {
+      min-width: 100%;
+    }
+
+    mat-paginator {
+      align-self: center;
+    }
+  }
+}

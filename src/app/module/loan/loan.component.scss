@@ -1,0 +1,53 @@
+.prestamo {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__header {
+    text-align: center;
+    color: #333;
+  }
+
+  &__list {
+    padding-top: 20px;
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    table {
+      width: 100%;
+      min-width: 700px;
+      td,
+      th {
+        padding: 10px;
+        text-align: left;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+    }
+  }
+
+  .action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 630px) {
+  .prestamo {
+    padding: 14px;
+  }
+  .container {
+    padding: 10px;
+  }
+
+  .prestamo__list {
+    table {
+      min-width: 100%;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+<div class="book">
+  <h2 class="book__header">Gestión de Libros</h2>
+  <div class="book__actions">
+    <button mat-raised-button color="primary" (click)="openBookModal()">
+      <mat-icon>add</mat-icon>
+      <span>Agregar</span>
+    </button>
+  </div>
+  <div class="book__list">
+    <table mat-table [dataSource]="dataSource" >
+      <ng-container matColumnDef="titulo">
+        <th mat-header-cell *matHeaderCellDef>Título</th>
+        <td mat-cell *matCellDef="let libro">{{ libro.title }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="autor">
+        <th mat-header-cell *matHeaderCellDef>Autor</th>
+        <td mat-cell *matCellDef="let libro">{{ libro.author }}</td>
+      </ng-container>
+      `
+      <ng-container matColumnDef="categoria">
+        <th mat-header-cell *matHeaderCellDef>Categoría</th>
+        <td mat-cell *matCellDef="let libro">{{ libro.category }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="precio">
+        <th mat-header-cell *matHeaderCellDef>Precio</th>
+        <td mat-cell *matCellDef="let libro">{{ libro.price | currency }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let libro">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="openBookModal(libro)">
+              <mat-icon>edit</mat-icon> Editar
+            </button>
+            <button mat-menu-item (click)="onDelete(libro.id)">
+              <mat-icon>delete</mat-icon> Eliminar
+            </button>
+            <button mat-menu-item (click)="onDetail(libro.id)">
+              <mat-icon>visibility</mat-icon> Ver detalle
+            </button>
+          </mat-menu>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>

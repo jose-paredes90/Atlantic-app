@@ -1,0 +1,46 @@
+<div class="container">
+  <h2>Gestión de Préstamos</h2>
+  <mat-dialog-content>
+    <form [formGroup]="loanForm">
+      <div class="form-row">
+        <mat-form-field class="form-group" appearance="outline">
+          <mat-label>Libro</mat-label>
+          <mat-select formControlName="libroId" required>
+            <mat-option *ngFor="let book of booksCopy" [value]="book.value">
+              {{ book.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="form-group" appearance="fill">
+          <mat-label>Cliente</mat-label>
+          <mat-select formControlName="clienteId">
+            <mat-option *ngFor="let client of clients" [value]="client.id">
+              {{ client.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="form-row">
+
+        <mat-form-field>
+        <mat-label>Fecha de Devolución</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fechaDevolucion" [min]="minDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Cancelar</button>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="loanForm.invalid"
+      (click)="createPrestamo()"
+    >
+      {{ editingPrestamo ? "Actualizar" : "Guardar" }}
+    </button>
+  </mat-dialog-actions>
+</div>

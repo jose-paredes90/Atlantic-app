@@ -1,0 +1,55 @@
+<nav class="mat-nav">
+  <div class="mat-nav__container">
+    <button mat-icon-button class="menu-button" (click)="toggleMenu()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <div class="mat-nav__container-logo">
+      <a href="#" class="brand-link">
+        <span class="brand-text">Library Store</span>
+      </a>
+      <div class="mat-nav__container-links" [class.open]="menuOpen || isDesktop">
+        <a mat-button (click)="navigateTo('/libros')" class="nav-link">
+          <mat-icon>menu_book</mat-icon> Libros
+        </a>
+        <a mat-button (click)="navigateTo('/prestamos')" class="nav-link">
+          <mat-icon>assignment</mat-icon> Préstamos
+        </a>
+      </div>
+    </div>
+
+    <div class="mat-nav__container-login">
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="navigateTo('login')">
+      <mat-icon>login</mat-icon> Iniciar Sesión
+    </button>
+    <button mat-menu-item (click)="navigateTo('register')">
+      <mat-icon>person_add</mat-icon> Registrarse
+    </button>
+  </mat-menu>
+
+  <div>
+    <div class="overlay-menu" [class.open]="menuOpen && !isDesktop">
+      <div class="menu-header">
+        <h1>Library Store</h1>
+        <button class="close-button" (click)="toggleMenu()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      <div class="menu-content">
+        <a (click)="navigateTo('/libros')" class="nav-link">
+          <mat-icon>menu_book</mat-icon> Libros
+        </a>
+        <a (click)="navigateTo('/prestamos')" class="nav-link">
+          <mat-icon>assignment</mat-icon> Préstamos
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
